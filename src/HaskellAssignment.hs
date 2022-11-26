@@ -11,7 +11,13 @@ findFirst :: Eq a => (a -> Bool) -> [a] -> Found
 findFirst _ [] = NoMatch
 findFirst needleFunc (haystackH:haystackTail)
   | needleFunc haystackH = Match 0
-  | otherwise = findFirst needleFunc haystackTail  
+  | otherwise = findFirstWithIndex needleFunc haystackTail 1
+
+findFirstWithIndex :: (t -> Bool) -> [t] -> Int -> Found
+findFirstWithIndex _ [] _ = NoMatch
+findFirstWithIndex needleFunc (haystackH:haystackTail) currentIndex
+  | needleFunc haystackH = Match currentIndex 
+  | otherwise = findFirstWithIndex needleFunc haystackTail (currentIndex+1)
 ------------------------------------------------
 -- runLengthEncode
 ------------------------------------------------
