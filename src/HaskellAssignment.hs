@@ -1,6 +1,6 @@
 module HaskellAssignment where
 
-import Text.ParserCombinators.ReadP (string)
+import Data.List (group)
 
 ------------------------------------------------
 -- findFirst
@@ -31,9 +31,11 @@ data RunLength = Span Integer Char deriving (Eq)
 instance Show RunLength where
   show (Span length c) = "Length: " ++ show length ++ ": " ++ show c
 
+
+-- Group characters together, then map to the Span constructor
 runLengthEncode :: [Char] -> [RunLength]
 runLengthEncode [] = []
-runLengthEncode string = []
+runLengthEncode to_encode = map (\x -> Span (toInteger (length x)) (head x)) (group to_encode)
 
 ------------------------------------------------
 -- palindrome
