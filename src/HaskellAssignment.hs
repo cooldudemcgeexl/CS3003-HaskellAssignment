@@ -26,14 +26,17 @@ instance Show RunLength where
   show (Span length c) = "Length: " ++ show length ++ ": " ++ show c
 runLengthEncode :: [Char] -> [RunLength]
 runLengthEncode [] = []
+runLengthEncode string = []
 
 ------------------------------------------------
 -- palindrome
 ------------------------------------------------
 palindrome :: [Char] -> Bool
 palindrome [] = True
+palindrome string = True
 ------------------------------------------------
 -- mergesort
 ------------------------------------------------
 mergesort :: (Ord a) => (a -> a -> Bool) -> [a] -> [a]
 mergesort ordFunc [] = []
+mergesort ordFunc list = list
