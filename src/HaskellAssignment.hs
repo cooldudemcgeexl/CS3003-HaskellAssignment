@@ -43,9 +43,9 @@ runLengthEncode string = []
 -- However, this gives a decently concise, tail-recursive definition.
 palindrome :: [Char] -> Bool
 palindrome [] = True
-palindrome (stringHead : stringTail)
-  | stringHead /= last (stringHead : stringTail) = False
-  | otherwise = palindrome (take (length stringTail - 1) stringTail)
+palindrome (candidateHead : candidateTail)
+  | candidateHead /= last (candidateHead : candidateTail) = False
+  | otherwise = palindrome (take (length candidateTail - 1) candidateTail)
 
 ------------------------------------------------
 -- mergesort
